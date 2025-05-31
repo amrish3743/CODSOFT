@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" >
+    
+</head>
+
+<body>
+    <header>
+        <div id="stars"></div>
+        <div class="navber">
+            <img src="img/Logo.png" alt="">
+            <div class="center-nav">
+                <a href="">Home</a>
+                <a href="">Menu</a>
+                <a href="">About</a>
+                <a href="">Shop</a>
+            </div>
+            <div class="social">
+                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href=""><i class="fa-solid fa-cart-plus"></i></a>
+                <a href=""><i class="fa-solid fa-house"></i></a>
+            </div>
+        </div>
+
+        <div class="text">
+            <h1>THE ULTIMATE <br> BURGER KING</h1>
+            <p>The taste of Burger King’s food is one of its most distinctive qualities, especially its signature flame-grilled burgers. The Whopper, its most famous burger, is known for its juicy patty, fresh toppings, and well-balanced combination of flavors.</p>
+            <a href="" class="btn">Order Now</a>
+            <a href="" class="btn">View More</a>
+        </div>
+
+        <div class="burger">
+            <img src="img/Burger-4.png" alt="">
+            <img src="img/Burger-6.png" alt="">
+
+        </div>
+         <div class="burger-toggle">
+            <img src="img/Burger-4.png" alt="" class="active">
+
+        </div>
+    </header>
+    <script>
+        const burgerImages = document.querySelectorAll('.burger img');
+        const toggleImages = document.querySelectorAll('.burger-toggle img');
+        let currentIndex = 0;
+
+        toggleImages[currentIndex].classList.add('active');
+
+        burgerImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                toggleImages.forEach(toggleImg => toggleImg.classList.remove('active'));
+                toggleImages[currentIndex].classList.add('active');
+                toggleImages[currentIndex].src = burgerImages[index].src;
+                currentIndex = (currentIndex + 1) % toggleImages.length;
+            });
+        });
+
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = '${Math.random() * windowWigth}px';
+                star.style.top = '${Math.random() * windowHeight}px';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        window.addEventListener('load', createStars)
+    </script>
+    
+</body>
+</html>
